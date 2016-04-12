@@ -11,7 +11,6 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
 
     $scope.randomRecipeId = {}; // TODO Is id working?? Otherwise use another attribut??
     $scope.getRandomRecipe = function(){
-
         var randomRecipeNumber = Math.floor(Math.random() * $scope.recipyList.length);
         var currentNumber = 0;
         angular.forEach($scope.recipyList, function(value){
@@ -40,7 +39,7 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
 
     $scope.filterRecipes = function(recipe){
         return recipe.type === "AwesomeRecipe";
-    }
+    };
 
 
     $scope.categoryList = ["Starter", "Main Course", "Dessert"];
