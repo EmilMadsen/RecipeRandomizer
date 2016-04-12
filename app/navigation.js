@@ -21,8 +21,7 @@ angular.module('randomRecipe').config(function($stateProvider, $urlRouterProvide
 
     $stateProvider.state('random', {
         url: '/random-recipe', //part of the url url in browser, #/
-        templateUrl: 'app/partials/random-recipe.html', //partial view here
-        controller: 'mainController'
+        templateUrl: 'app/partials/random-recipe.html' //partial view here
     });
 
     $stateProvider.state('week', {

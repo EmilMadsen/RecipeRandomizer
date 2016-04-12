@@ -9,7 +9,7 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
         return recipe._id === $scope.randomRecipeId;
     }
 
-    $scope.randomRecipeId = {}; // TODO Is id working?? Otherwise use another attribut??
+    $scope.randomRecipeId = {};
     $scope.getRandomRecipe = function(){
         var randomRecipeNumber = Math.floor(Math.random() * $scope.recipyList.length);
         var currentNumber = 0;
@@ -26,7 +26,7 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
         .success(function(data) {
             $scope.dummyRecipes = data;
             angular.forEach($scope.dummyRecipes, function(value){
-                if(value.type === "AwesomeRecipe"){
+                if(value.type === "AwesomeRecipe"){ // Could have made a call to "filterRecipes", but bad practice
                     $scope.recipyList.push(value);
                 }
             });
