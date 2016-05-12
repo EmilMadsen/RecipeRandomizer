@@ -13,6 +13,7 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
     $scope.getRandomRecipe = function(){
         var randomRecipeNumber = Math.floor(Math.random() * $scope.recipyList.length);
         var currentNumber = 0;
+        console.log("We are getting a random Recipe")
         angular.forEach($scope.recipyList, function(value){
             if (currentNumber === randomRecipeNumber){
                 $scope.randomRecipeId = value._id;
@@ -43,6 +44,8 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
 
 
     $scope.categoryList = ["Starter", "Main Course", "Dessert"];
+    $scope.cuisineList = ["African","Asian","European","NorthAmerican", "Oceanian", "SouthAmerican"];
+    $scope.timeList = ["15 min","30 min","45 min","1 hour", "1½ hour","2 hours","3 hours", "+4 hours"];
 
     $scope.recipyList = [];
 
