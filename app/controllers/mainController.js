@@ -1,20 +1,47 @@
-angular.module("randomRecipe").controller("mainController", function($scope, $state, $http) {
+angular.module("randomRecipe").controller("mainController", function($scope, $state, recipeAPIService) {
     console.log("In Maincontroller!");
 
+    $scope.allData = [];
+    $scope.allRecipes = [];
+    $scope.randomRecipeId = {};
+    $scope.categoryList = ["Starter", "Main Course", "Dessert"];
+    $scope.cuisineList = ["African","Asian","European","NorthAmerican", "Oceanian", "SouthAmerican"];
+    $scope.timeList = ["15 min","30 min","45 min","1 hour", "1½ hour","2 hours","3 hours", "+4 hours"];
+
+
+    recipeAPIService.getRecipes().then(function(recipes){
+        $scope.allData = recipes;
+        console.log("Data Retrieved from API");
+
+        angular.forEach($scope.allData, function(recipe){
+           if (recipe.type === "AwesomeRecipe")
+           {
+               $scope.allRecipes.push(recipe);
+           }
+        });
+
+    },function(error){
+        alert("error - Could not retrieve data from database");
+    });
+
+    // Navigate to edit, by clicking on a recipe in the table
     $scope.editRecipe = function(recipeCopy){
         $state.go("manage-recipes.new", {recipeParameter: angular.copy(recipeCopy)})
     };
 
+    $scope.filterRecipes = function(recipe){
+        return recipe.type === "AwesomeRecipe";
+    };
+
     $scope.filterRandomRecipes = function(recipe){
         return recipe._id === $scope.randomRecipeId;
-    }
+    };
 
-    $scope.randomRecipeId = {};
     $scope.getRandomRecipe = function(){
-        var randomRecipeNumber = Math.floor(Math.random() * $scope.recipyList.length);
+        var randomRecipeNumber = Math.floor(Math.random() * $scope.allRecipes.length);
         var currentNumber = 0;
-        console.log("We are getting a random Recipe")
-        angular.forEach($scope.recipyList, function(value){
+        console.log("We are getting a random Recipe");
+        angular.forEach($scope.allRecipes, function(value){
             if (currentNumber === randomRecipeNumber){
                 $scope.randomRecipeId = value._id;
                 $state.go("random");
@@ -23,35 +50,19 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
         });
     };
 
+/*
     $http({method: "GET", url: "http://angularkea1.azurewebsites.net/api/internships/GetAll"})
         .success(function(data) {
             $scope.dummyRecipes = data;
             angular.forEach($scope.dummyRecipes, function(value){
                 if(value.type === "AwesomeRecipe"){ // Could have made a call to "filterRecipes", but bad practice
-                    $scope.recipyList.push(value);
+                    $scope.allRecipes.push(value);
                 }
             });
-            console.log($scope.recipyList);
+            console.log($scope.allRecipes);
             alert("success");
         }).error(function(data) {
             alert("error");
         });
-
-
-    $scope.filterRecipes = function(recipe){
-        return recipe.type === "AwesomeRecipe";
-    };
-
-
-    $scope.categoryList = ["Starter", "Main Course", "Dessert"];
-    $scope.cuisineList = ["African","Asian","European","NorthAmerican", "Oceanian", "SouthAmerican"];
-    $scope.timeList = ["15 min","30 min","45 min","1 hour", "1½ hour","2 hours","3 hours", "+4 hours"];
-
-    $scope.recipyList = [];
-
-    $scope.dummyRecipes = [
-        {name: "Pizza", link: "http://www.fanzyrecipes.com/pizza", category: "Main Course", description: "Nice 'n' easy"},
-        {name: "Burger", link: "http://www.fanzyrecipes.com/burger", category: "Main Course", description: "Nice 'n' easy"},
-        {name: "Ice Cream", link: "http://www.fanzyrecipes.com/icecream", category: "Dessert", description: "Nice 'n' easy"}
-    ];
+*/
 });

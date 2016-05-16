@@ -5,18 +5,20 @@
     <title>Recipe Randomizer</title>
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="styling.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
     <script>
-        angular.module("randomRecipe", ['ui.router']);
+        angular.module("randomRecipe", ['ui.router', 'ngResource']);
     </script>
 
     <script src="app/controllers/mainController.js"></script>
     <script src="app/controllers/newEditRecipeController.js"></script>
     <script src="app/navigation.js"></script>
+    <script src="app/services.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>

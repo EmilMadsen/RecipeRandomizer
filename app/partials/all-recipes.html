@@ -11,7 +11,7 @@
             <th class="col-sm-12 col-md-4">Description</th>
         </thead>
         <tbody>
-            <tr ng-repeat="recipe in dummyRecipes | filter: filterRecipes">
+            <tr ng-repeat="recipe in allRecipes | filter: filterRecipes">
                 <td ng-click="editRecipe(recipe)">{{recipe.name}}</td>
                 <td><a href="{{recipe.link}}">{{recipe.link}}</a></td>
                 <td ng-click="editRecipe(recipe)">{{recipe.category}}</td>

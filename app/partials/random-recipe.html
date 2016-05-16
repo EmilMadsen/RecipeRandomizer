@@ -12,7 +12,7 @@
             <th class="col-sm-8 col-md-4">Time</th>
             </thead>
             <tbody>
-            <tr ng-repeat="recipe in recipyList | filter: filterRecipes | filter: filterRandomRecipes">
+            <tr ng-repeat="recipe in allRecipes | filter: filterRandomRecipes">
                 <td>{{recipe.name}}</td>
                 <td><a href="{{recipe.link}}">{{recipe.link}}</a></td>
                 <td>{{recipe.category}}</td>
