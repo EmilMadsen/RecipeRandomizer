@@ -1,8 +1,9 @@
-angular.module('randomRecipe').config(function($stateProvider, $urlRouterProvider){
+angular.module('randomRecipe')
+    .config(function($stateProvider, $urlRouterProvider){
 
     console.log("In Navigation!");
 
-    $urlRouterProvider.otherwise('/home')
+    $urlRouterProvider.otherwise('/home');
 
     //$stateProvider.state('new-recipe', {
     //    url: '/new-recipe',            // If user changes url
@@ -43,7 +44,7 @@ angular.module('randomRecipe').config(function($stateProvider, $urlRouterProvide
 
     $stateProvider.state('manage-recipes.all', {
         url: '/all',
-        templateUrl: 'app/partials/all-recipes.html',
+        templateUrl: 'app/partials/all-recipes.html'
     });
 
 

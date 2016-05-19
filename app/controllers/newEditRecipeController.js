@@ -1,4 +1,5 @@
-angular.module("randomRecipe").controller("newEditRecipeController", function($scope, $state, $stateParams, recipeAPIService){
+angular.module("randomRecipe")
+    .controller("newEditRecipeController", function($scope, $state, $stateParams, recipeAPIService){
 
     $scope.recipe = {};
     $scope.recipe.category = {};
