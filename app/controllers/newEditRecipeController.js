@@ -23,7 +23,8 @@ angular.module("randomRecipe")
             console.log("Valid Recipe");
             //console.log("DropDown category = "+$scope.$parent.startCategory);
             console.log($scope.recipe);
-            $scope.recipe.type = "AwesomeRecipe";
+
+           // $scope.recipe.type = "AwesomeRecipe";
 
             if($scope.recipe._id === undefined)
             {

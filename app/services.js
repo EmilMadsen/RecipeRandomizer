@@ -4,10 +4,12 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
     var recipes = [];
 
     var recipeResource = $resource(
-        "http://angularkea2.azurewebsites.net/api/internships/:id",
+        "http://angularkea2.azurewebsites.net/api/internships/:id", // Christian Kirschberg
+        //"http://kearecipeapi.herokuapp.com/recipes/:id", // Node gruppe
+        //"https://fast-garden-76696.herokuapp.com/customers/:id",
         {id:'@id'},
         {
-            update: {method: 'PUT'}
+            'update': {method: 'PUT'}
         }
     );
 
@@ -43,7 +45,7 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
         },
         updateRecipe : function(recipe){
             var deferred = $q.defer();
-            recipeResource.update(recipe, function(data){
+            new recipeResource(recipe).$update({id: recipe._id}, function(data){
                 recipes.push(recipe);
                 deferred.resolve(data);
             }, function(error){
@@ -53,7 +55,7 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
         },
         deleteRecipe : function(recipe_id){
             var deferred = $q.defer();
-            recipeResource.deleteRecipe(recipe, function(data){
+            recipeResource.delete(recipe, function(data){
                 deferred.resolve(data);
                 recipes.push(recipe);
             }, function(error){

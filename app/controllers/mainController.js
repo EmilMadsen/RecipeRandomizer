@@ -13,12 +13,12 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
         $scope.allData = recipes;
         console.log("Data Retrieved from API");
 
+        $scope.allRecipes = recipes;
+        /*
         angular.forEach($scope.allData, function(recipe){
-           if (recipe.type === "AwesomeRecipe")
-           {
-               $scope.allRecipes.push(recipe);
-           }
+            $scope.allRecipes.push(recipe);
         });
+        */
 
     },function(error){
         alert("error - Could not retrieve data from database");
@@ -29,9 +29,11 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
         $state.go("manage-recipes.new", {recipeParameter: angular.copy(recipeCopy)})
     };
 
+    /*
     $scope.filterRecipes = function(recipe){
         return recipe.type === "AwesomeRecipe";
     };
+    */
 
     $scope.filterRandomRecipes = function(recipe){
         return recipe._id === $scope.randomRecipeId;
