@@ -3,6 +3,11 @@
 <div class="container">
     <h1>List of All Recipes</h1>
 <div class="spanTest">
+        <div class="row">
+            <div class="col-xs-4">
+                <input type="text" class="form-control" ng-model="search" placeholder="Search"/>
+            </div>
+        </div>
     <table class="table table-bordered table-responsive table-hover">
         <thead>
             <th class="col-sm-12 col-md-4">Name</th>
@@ -11,7 +16,7 @@
             <th class="col-sm-12 col-md-4">Description</th>
         </thead>
         <tbody>
-            <tr ng-repeat="recipe in allRecipes | filter: filterRecipes">
+            <tr ng-repeat="recipe in allRecipes | filter: filterRecipes | recipeSearch:search">
                 <td ng-click="editRecipe(recipe)">{{recipe.name}}</td>
                 <td><a href="{{recipe.link}}">{{recipe.link}}</a></td>
                 <td ng-click="editRecipe(recipe)">{{recipe.category}}</td>

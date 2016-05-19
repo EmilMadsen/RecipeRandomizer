@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="randomRecipe">
+<html lang="en" ng-app="randomRecipe"> <!--ng-app her gives navnet på siden hvor alt skal indsættes i-->
 <head>
     <meta charset="UTF-8">
-    <title>Recipe Randomizer</title>
+    <title>Recipe Randomizer</title> <!--titlen på fanebladet i browseren-->
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/> <!---->
+    <link rel="stylesheet" href="css/styles.css"/> <!---->
 
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script> <!--angular når der benyttes angular i applikationen-->
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> <!--angular-ui-router bruge til den interne navigering i applikationen-->
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script> <!--angular-resource bruges i forbindelsen til API'en-->
+    <script src="node_modules/underscore/underscore-min.js"></script> <!--Bruges til filtret: searchRecipe-->
 
     <script>
-        angular.module("randomRecipe", ['ui.router', 'ngResource']);
+        angular.module("randomRecipe", ['ui.router', 'ngResource']);//Instans af grundlæggende Angular object [m dependencies]
     </script>
 
-    <script src="app/controllers/mainController.js"></script>
-    <script src="app/controllers/newEditRecipeController.js"></script>
-    <script src="app/navigation.js"></script>
-    <script src="app/services.js"></script>
+    <script src="app/controllers/mainController.js"></script> <!--stient til maincontrolleren-->
+    <script src="app/controllers/newEditRecipeController.js"></script> <!--stient til newEditRecipeController-->
+    <script src="app/navigation.js"></script> <!--stien til navigationsmodulet-->
+    <script src="app/services.js"></script> <!--stien til services som indeholder recipeAPIService-->
+    <script src="app/filters.js"></script>  <!-- stien til filter som indeholder et til at filtere data der vises i viewet  -->
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
@@ -72,6 +75,6 @@
 <div ui-view></div>
 
 
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script> <!--Der bruges bootstrap til styling-->
 </body>
 </html>
