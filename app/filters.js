@@ -13,7 +13,7 @@ angular.module("randomRecipe")
                 _.filter(data, function (recipe) { //data is all our internship internship just a name
 
                     return recipe.name && //testing if there are initials at all
-                        recipe.name.indexOf(search) !== -1; //|| //initials is a string indexof returns the position of where the search is
+                         recipe.name.toLowerCase().indexOf(search.toLowerCase()) !== -1; //|| //initials is a string indexof returns the position of where the search is
                     //internship.student && //testing if there are initials at all
                     //internship.student.indexOf(search);
                 });
