@@ -60,9 +60,16 @@
                         </script>
                     </li>
                     <li class="dropdown">
+
                         <a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span> Manage Recipes
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <script>
+                                $(".nav a").on("click", function(){
+                                    $(".nav").find(".active").removeClass("active");
+                                    $(this).parent().addClass("active");
+                                });
+                            </script>
                             <li><a ui-sref="manage-recipes.all">See All</a></li>
                             <li><a ui-sref="manage-recipes.new">New Recipe</a></li>
                         </ul>
