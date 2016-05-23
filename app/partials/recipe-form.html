@@ -10,7 +10,7 @@
                 <br>
                 Name is required
                 </span>
-            <input class="form-control" required ng-model="recipe.name" name="name">
+            <input class="form-control" focus-if required ng-model="recipe.name" name="name">
             <br>
         </div>
 
@@ -81,6 +81,6 @@
         </div>
 
         <input type="submit" value="Save" class="btn btn-primary" enter-to-submit="submitForm()"/>
-        <input type="button" value="Delete" class="btn btn-danger" />
+        <input type="button" value="Delete" class="btn btn-danger" ng-click="deleteRecipe()" ng-show="recipe._id"/>
     </div>
 </form>

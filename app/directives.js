@@ -20,5 +20,4 @@ angular.module("randomRecipe") //reference to internship module
                 }
             });
         }
-
     });

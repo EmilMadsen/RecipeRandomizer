@@ -11,9 +11,10 @@
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> <!--angular-ui-router bruge til den interne navigering i applikationen-->
     <script src="node_modules/angular-resource/angular-resource.min.js"></script> <!--angular-resource bruges i forbindelsen til API'en-->
     <script src="node_modules/underscore/underscore-min.js"></script> <!--Bruges til filtret: searchRecipe-->
+    <script src="node_modules/ng-focus-if/focusIf.min.js"> </script> <!--Bruges til focus-->
 
     <script>
-        angular.module("randomRecipe", ['ui.router', 'ngResource']);//Instans af grundlæggende Angular object [m dependencies]
+        angular.module("randomRecipe", ['ui.router', 'ngResource','focus-if']);//Instans af grundlæggende Angular object [m dependencies]
     </script>
 
     <script src="app/controllers/mainController.js"></script> <!--stient til maincontrolleren-->

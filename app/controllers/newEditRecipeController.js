@@ -26,60 +26,23 @@ angular.module("randomRecipe")
 
            // $scope.recipe.type = "AwesomeRecipe";
 
-            if($scope.recipe._id === undefined)
-            {
-                //Create
-                recipeAPIService.createRecipe($scope.recipe).then(function(data){
-                    console.log("CREATED Recipe : " + $scope.recipe.name );
-                    $scope.$parent.allRecipes.push(data);
-                    // $scope.$parent.allRecipes.push($scope.recipe)
-                },function(error){
-                    alert("error : " + error);
-                });
-
-            /*
-                $http({method: "POST",
-                    data: $scope.recipe ,
-                    url: "http://angularkea1.azurewebsites.net/api/internships/Create"})
-                    .success(function(data) {
-                        $scope.allRecipes = data;
-                        alert("success");
-                        $scope.$parent.allRecipes.push($scope.recipe)
-                    }).error(function(data) {
-                    alert("error");
-                });
-            */
-            }
-            else{
-                //Update
-                recipeAPIService.updateRecipe($scope.recipe).then(function(data){
-                    console.log("UPDATED Recipe : " + $scope.recipe.name );
-                    $scope.$parent.allRecipes.push(data);
-                    //$scope.$parent.allRecipes.push($scope.recipe);
-                },function(error){
-                    alert("error : " + error);
-                });
-
-
-                /*
-                 console.log("UPDATING_______-------");
-                 $http({method: "POST",
-                     data: $scope.recipe ,
-                     url: "http://angularkea1.azurewebsites.net/api/internships/Update/" + $scope.recipe._id}) // Nøgle?!
-                     .success(function(data) {
-                         $scope.dummyRecipes = data;
-                         alert("success");
-                     }).error(function(data) {
-                     alert("error");
-                 });
-             */
-            //$scope.$parent.dummyInternships.push($scope.internship);
+            recipeAPIService.saveRecipe($scope.recipe).then(function(data){
+                console.log("Recipe: " + $scope.recipe.name + " is saved");
+            },function(error){
+                alert("error : " + error);
+            });
+            $state.go("manage-recipes.all")
         }
-        $state.go("manage-recipes.all")
-    }
-    else{
-        console.log("Form not Valid")
+        else{
+            console.log("Form not Valid")
+        }
     }
 
-    };
+    $scope.deleteRecipe = function(){
+        recipeAPIService.deleteRecipe($scope.recipe).then(function(data){
+            $state.go("manage-recipes.all")
+        },function(error){
+            alert("error : " + error)
+        })
+    }
 });

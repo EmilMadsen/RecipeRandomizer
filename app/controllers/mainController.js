@@ -51,20 +51,4 @@ angular.module("randomRecipe").controller("mainController", function($scope, $st
             currentNumber++;
         });
     };
-
-/*
-    $http({method: "GET", url: "http://angularkea1.azurewebsites.net/api/internships/GetAll"})
-        .success(function(data) {
-            $scope.dummyRecipes = data;
-            angular.forEach($scope.dummyRecipes, function(value){
-                if(value.type === "AwesomeRecipe"){ // Could have made a call to "filterRecipes", but bad practice
-                    $scope.allRecipes.push(value);
-                }
-            });
-            console.log($scope.allRecipes);
-            alert("success");
-        }).error(function(data) {
-            alert("error");
-        });
-*/
 });
