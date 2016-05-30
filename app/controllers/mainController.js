@@ -1,14 +1,15 @@
-angular.module("randomRecipe").controller("mainController", function($scope, $state, recipeAPIService) {
+angular.module("randomRecipe")
+    .controller("mainController", function($scope, $state, recipeAPIService) {
     console.log("In Maincontroller!");
 
-    //$scope.allData = [];
     $scope.allRecipes = [];
     $scope.randomRecipeId = {};
+    //array af Strings til dropdown menuerne i recipe-form
     $scope.categoryList = ["Starter", "Main Course", "Dessert"];
     $scope.cuisineList = ["African","Asian","European","NorthAmerican", "Oceanian", "SouthAmerican"];
     $scope.timeList = ["15 min","30 min","45 min","1 hour", "1½ hour","2 hours","3 hours", "+4 hours"];
 
-
+    //anmoder service om at hente alle recipe fra API'et
     recipeAPIService.getRecipes().then(function(recipes){
 
         console.log("Data Retrieved from API");

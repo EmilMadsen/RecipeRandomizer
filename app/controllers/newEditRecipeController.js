@@ -1,5 +1,5 @@
 angular.module("randomRecipe")
-    .controller("newEditRecipeController", function($scope, $state, $stateParams, recipeAPIService){
+    .controller("newEditRecipeController", function($scope, $state, $stateParams, recipeAPIService){ //Dependencies injections
 
     $scope.recipe = {};
     $scope.recipe.category = {};
@@ -28,10 +28,11 @@ angular.module("randomRecipe")
 
             recipeAPIService.saveRecipe($scope.recipe).then(function(data){
                 console.log("Recipe: " + $scope.recipe.name + " is saved");
+                //allRecipes = recipeAPIService.allRecipes;
+                $state.go("manage-recipes.all")
             },function(error){
                 alert("error : " + error);
             });
-            $state.go("manage-recipes.all")
         }
         else{
             console.log("Form not Valid")
@@ -40,6 +41,9 @@ angular.module("randomRecipe")
 
     $scope.deleteRecipe = function(){
         recipeAPIService.deleteRecipe($scope.recipe).then(function(data){
+            $scope.$parent.allRecipes = data;
+            console.log("Wierd list from API ----")
+            console.log(recipeAPIService.allRecipes);
             $state.go("manage-recipes.all")
         },function(error){
             alert("error : " + error)

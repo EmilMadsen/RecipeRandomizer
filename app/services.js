@@ -63,33 +63,12 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
             }
             return deferred.promise;
         },
-        /*
-        createRecipe : function(recipe){
-            var deferred = $q.defer();
-            recipeResource.save(recipe, function(data){
-                recipes.push(recipe);
-                deferred.resolve(data);
-            }, function(error){
-                deferred.reject(error);
-            });
-            return deferred.promise;
-        },
-        updateRecipe : function(recipe){
-            var deferred = $q.defer();
-            new recipeResource(recipe).$update({id: recipe._id}, function(data){
-                recipes.push(recipe);
-                deferred.resolve(data);
-            }, function(error){
-                deferred.reject(error);
-            });
-            return deferred.promise;
-        },*/
         deleteRecipe : function(recipe){
             deferred = $q.defer();
             recipeResource.delete({id: recipe._id}, function(data){
-                deferred.resolve(data);
                 var index = recipes.indexOf(recipe._id); // Finder objektets placering i listen
                 recipes.splice(index - 1 ,1); // minus index med 1, da "splice" metoden er nul index'eret
+                deferred.resolve(recipes);
             }, function(error){
                 deferred.reject(error);
             });
