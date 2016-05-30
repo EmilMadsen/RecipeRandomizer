@@ -23,4 +23,7 @@ angular.module("randomRecipe")
             return result;
 
         };
-    });
+    })
+
+
+;

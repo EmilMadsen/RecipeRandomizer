@@ -5,12 +5,12 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
     var deferred;
 
     var recipeResource = $resource(
-        //"http://angularkea2.azurewebsites.net/api/internships/:id", // Christian Kirschberg
+        //"http://angularkea2.azurewebsites.net/api/internships/:id", // Christian Kirschbergs API
         "http://kearecipeapi.herokuapp.com/recipes/:id", // Node gruppe
-        //"https://fast-garden-76696.herokuapp.com/customers/:id",
+
         {id:'@id'},
         {
-            'update': {method: 'PUT'} //definerer vores egen update metode
+            'update': {method: 'PUT'} //definerer vores egen update metode fordi den ikke findes i ressource
         }
     );
 

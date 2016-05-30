@@ -36,7 +36,7 @@ angular.module("randomRecipe")
         else{
             console.log("Form not Valid")
         }
-    }
+    };
 
     $scope.deleteRecipe = function(){
         recipeAPIService.deleteRecipe($scope.recipe).then(function(data){
