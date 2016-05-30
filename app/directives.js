@@ -16,7 +16,7 @@ angular.module("randomRecipe") //reference to internship module
                      scope.$eval(attrs.enterToSubmit);
                  });
 
-                 event.preventDefault();
+                 event.preventDefault(); //Cancel event.
                 }
             });
         }

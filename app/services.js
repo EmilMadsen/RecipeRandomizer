@@ -40,6 +40,7 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
             if(recipe._id === undefined)
             {
                 recipeResource.save(recipe, function(data){
+                    recipe._id = data._id;
                     recipes.push(recipe);
                     deferred.resolve(data);
                 }, function(error){
