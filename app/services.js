@@ -67,7 +67,7 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
             deferred = $q.defer();
             recipeResource.delete({id: recipe._id}, function(data){
                 var index = recipes.indexOf(recipe._id); // Finder objektets placering i listen
-                recipes.splice(index - 1 ,1); // minus index med 1, da "splice" metoden er nul index'eret
+                recipes.splice(index ,1);
                 deferred.resolve(recipes);
             }, function(error){
                 deferred.reject(error);
