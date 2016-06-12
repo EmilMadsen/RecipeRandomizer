@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="randomRecipe"> <!--ng-app her gives navnet på siden hvor alt skal indsættes i-->
+<html lang="en" ng-app="randomRecipe"> <!--ng-app directives initialiserer at hele randomRecipe er en angularJS applikation-->
 <head>
     <meta charset="UTF-8">
     <title>Recipe Randomizer</title> <!--titlen på fanebladet i browseren-->
 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/> <!---->
-    <link rel="stylesheet" href="css/styles.css"/> <!---->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/> <!--link stylesheet med bootstrap i node_modules-->
+    <link rel="stylesheet" href="css/styles.css"/> <!--link til stylesheet css i node_modules-->
 
     <script src="node_modules/angular/angular.min.js"></script> <!--angular når der benyttes angular i applikationen-->
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script> <!--angular-ui-router bruge til den interne navigering i applikationen-->
@@ -23,10 +23,11 @@
     <script src="app/services.js"></script> <!--stien til services som indeholder recipeAPIService-->
     <script src="app/filters.js"></script>  <!-- stien til filter som indeholder et til at filtere data der vises i viewet  -->
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script><!---->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
-<body ng-controller="mainController">
+
+<body ng-controller="mainController"><!---->
 <div class="container">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -48,7 +49,7 @@
                                 $(".nav").find(".active").removeClass("active");
                                 $(this).parent().addClass("active");
                             });
-                        </script><!--Hej-->
+                        </script>
                     </li>
 
                     <li><a ui-sref="week"><span class="glyphicon glyphicon-th-list"></span> Weekly Food Plan</a>
