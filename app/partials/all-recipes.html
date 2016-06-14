@@ -17,10 +17,10 @@
             <th>Description</th>
         </thead>
         <tbody>
-            <!--<tr ng-repeat="recipe in allRecipes | filter: filterRecipes | recipeSearch:search"> -->
-            <tr ng-repeat="recipe in allRecipes | recipeSearch:search : false">
-                <td ng-click="editRecipe(recipe)">{{recipe.name}}</td>
-                <td><a href="{{recipe.link}}">{{recipe.link}}</a></td>
+            <!--looper igennem allRecipe array og tilføjer relevant data-->
+            <tr ng-repeat="recipe in allRecipes | recipeSearch:search : false"><!--kører search for hvert element-->
+                <td ng-click="editRecipe(recipe)">{{recipe.name}}</td><!--kalder editRecipe med ng-click-->
+                <td><a href="{{recipe.link}}">{{recipe.link}}</a></td><!--aktivt link - derfor intet ng-click -->
                 <td ng-click="editRecipe(recipe)">{{recipe.category}}</td>
                 <td ng-click="editRecipe(recipe)">{{recipe.description}}</td>
             </tr>

@@ -7,10 +7,7 @@ angular.module("randomRecipe") //reference to internship module
 
             //Key codes - A number which represents an actual key on the keyboard
             element.bind("keydown keypress", function (event) { //element The keydown event occurs when the key is pressed, followed immediately by the keypress event. Then the keyup event is generated when the key is released.
-                // Add which for key events
-                //if ( event.which === null && (event.charCode !== null || event.keyCode !== null) ) {
-                 //   event.which = event.charCode !== null ? event.charCode : event.keyCode;
-                //}
+
                 if(event.which === 13) {
                  scope.$apply(function (){
                      scope.$eval(attrs.enterToSubmit);

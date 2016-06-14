@@ -21,14 +21,10 @@ angular.module("randomRecipe")
 
         if ($scope.recipeForm.$valid) {
             console.log("Valid Recipe");
-            //console.log("DropDown category = "+$scope.$parent.startCategory);
             console.log($scope.recipe);
-
-           // $scope.recipe.type = "AwesomeRecipe";
 
             recipeAPIService.saveRecipe($scope.recipe).then(function(data){
                 console.log("Recipe: " + $scope.recipe.name + " is saved");
-                //allRecipes = recipeAPIService.allRecipes;
                 $state.go("manage-recipes.all")
             },function(error){
                 alert("error : " + error);

@@ -17,14 +17,14 @@ angular.module("randomRecipe")
 
     return{
         getRecipes : function(){
-            deferred = $q.defer();
-            recipeResource.query(function(data){
-                recipes = data;
-                deferred.resolve(data);
-            }, function(error){
+            deferred = $q.defer();//defer lover at returnere noget når den får svar fra API
+            recipeResource.query(function(data){ //hvis succes fra API kald
+                recipes = data; //gemmes i lokalt array
+                deferred.resolve(data); //sender det modtagede data retur
+            }, function(error){ //hvis error fra API kald
                 deferred.reject(error);
             });
-            return deferred.promise;
+            return deferred.promise; //returnerer promise til controlleren, succes eller erro
         },
         getRecipe : function(recipe_id){
             deferred = $q.defer();
@@ -36,21 +36,22 @@ angular.module("randomRecipe")
             return deferred.promise;
         },
         saveRecipe : function(recipe){
-            deferred = $q.defer();
+            deferred = $q.defer();//lover at returnere noget senere, error eller data
 
-            if(recipe._id === undefined)
+            if(recipe._id === undefined) //hvis id undefined = new recipe
             {
-                recipeResource.save(recipe, function(data){
+                recipeResource.save(recipe, function(data){ //kalder API save metoden
                     console.log("Object returned from create");
                     console.log(data);
-                    recipe._id = data.id;
-                    recipes.push(recipe);
-                    deferred.resolve(data);
+                    recipe._id = data.id; //id created fra databasen gemmes i recipe._id
+                    recipes.push(recipe); //tilføjer recipe til lokalt array recipes
+                    deferred.resolve(data); //returnerer recipe til controlleren
                 }, function(error){
-                    deferred.reject(error);
+                    deferred.reject(error);//returnerer error hvis rejected
                 });
             } else
             {
+                //Anmoder API om at opdatere recipe med valgt id via ovenfor definerede update metode.
                 new recipeResource(recipe).$update({id: recipe._id}, function(data){
                     for(var i = 0; i < recipes.length; i++)
                     {
@@ -59,12 +60,12 @@ angular.module("randomRecipe")
                             recipes[i] = recipe;
                         }
                     }
-                    deferred.resolve(data);
+                    deferred.resolve(data);// sætter det lovede data
                 }, function(error){
-                    deferred.reject(error);
+                    deferred.reject(error);//sætter error hvis rejected
                 });
             }
-            return deferred.promise;
+            return deferred.promise; //returnerer som lovet data eller error
         },
         deleteRecipe : function(recipe){
             deferred = $q.defer();
