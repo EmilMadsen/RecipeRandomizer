@@ -1,4 +1,3 @@
-
 angular.module("randomRecipe")
     .factory("recipeAPIService",function($q, $resource){
 

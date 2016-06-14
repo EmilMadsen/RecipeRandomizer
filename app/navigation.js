@@ -1,5 +1,3 @@
-
-
 angular.module('randomRecipe')
     .config(function($stateProvider, $urlRouterProvider){
 
