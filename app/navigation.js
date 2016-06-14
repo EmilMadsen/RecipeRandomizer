@@ -7,16 +7,6 @@ angular.module('randomRecipe')
 
     $urlRouterProvider.otherwise('/home');
 
-        //$stateProvider.state('new-recipe', {
-        //    url: '/new-recipe',            // If user changes url
-        //    templateUrl: 'app/partials/recipe-form.html',
-        //    controller: 'newEditRecipeController'
-        //});
-        //$stateProvider.state('all-recipes', {
-        //    url: '/all-recipes', //part of the url url in browser, #/
-        //    templateUrl: 'app/partials/all-recipes.html' //partial view here
-        //});
-
     $stateProvider.state('home', {
         url: '/home', //part of the url url in browser, #/
         templateUrl: 'app/partials/home.html' //partial view here
@@ -32,6 +22,7 @@ angular.module('randomRecipe')
         templateUrl: 'app/partials/recipe-week.html' //partial view here
     });
 
+    //overordnet sub view til to yderligere subviews (nested subviews)
     $stateProvider.state('manage-recipes', {
         url: '/manage-recipes', //part of the url url in browser, #/
         templateUrl: 'app/partials/manage-recipes.html' //partial view here
@@ -41,7 +32,7 @@ angular.module('randomRecipe')
         url: '/new',
         templateUrl: 'app/partials/recipe-form.html',
         controller: 'newEditRecipeController',//
-        params: { recipeParameter: null }
+        params: { recipeParameter: null }//sættes til null når der klikkes på new recipe - så tidligere parametre ikke kommer med.
     });
 
     $stateProvider.state('manage-recipes.all', {

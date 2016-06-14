@@ -23,6 +23,7 @@ angular.module("randomRecipe")
 
     // Navigate to edit, by clicking on a recipe in the table (locally)
     $scope.editRecipe = function(recipeCopy){
+        //Navigerer til edit view og giver kopi af klikket recipe som parameter
         $state.go("manage-recipes.new", {recipeParameter: angular.copy(recipeCopy)})
     };
 
@@ -39,7 +40,6 @@ angular.module("randomRecipe")
         angular.forEach($scope.allRecipes, function(value){
             if (currentNumber === randomRecipeNumber){
                 $scope.randomRecipeId = value._id;
-                //$state.go("random");
             }
             currentNumber++;
         });
