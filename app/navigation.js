@@ -40,7 +40,7 @@ angular.module('randomRecipe')
     $stateProvider.state('manage-recipes.new', {
         url: '/new',
         templateUrl: 'app/partials/recipe-form.html',
-        controller: 'newEditRecipeController',
+        controller: 'newEditRecipeController',//
         params: { recipeParameter: null }
     });
 

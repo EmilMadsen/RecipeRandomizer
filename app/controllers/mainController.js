@@ -1,3 +1,4 @@
+
 angular.module("randomRecipe")
     .controller("mainController", function($scope, $state, recipeAPIService) {
     console.log("In Maincontroller!");
@@ -38,7 +39,7 @@ angular.module("randomRecipe")
         angular.forEach($scope.allRecipes, function(value){
             if (currentNumber === randomRecipeNumber){
                 $scope.randomRecipeId = value._id;
-                $state.go("random");
+                //$state.go("random");
             }
             currentNumber++;
         });

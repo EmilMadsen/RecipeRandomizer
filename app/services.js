@@ -1,5 +1,6 @@
 
-angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource){
+angular.module("randomRecipe")
+    .factory("recipeAPIService",function($q, $resource){
 
     var recipes = [];
     var deferred;
@@ -68,7 +69,7 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
         deleteRecipe : function(recipe){
             deferred = $q.defer();
             recipeResource.delete({id: recipe._id}, function(data){
-                var index = recipes.indexOf(recipe._id); // Finder objektets placering i listen
+                var index = recipes.indexOf(recipe._id)-1; // Finder objektets placering i listen
                 recipes.splice(index ,1);
                 deferred.resolve(recipes);
             }, function(error){
