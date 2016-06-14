@@ -5,12 +5,12 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
     var deferred;
 
     var recipeResource = $resource(
-        //"http://angularkea2.azurewebsites.net/api/internships/:id", // Christian Kirschberg
+        //"http://angularkea2.azurewebsites.net/api/internships/:id", // Christian Kirschbergs API
         "http://kearecipeapi.herokuapp.com/recipes/:id", // Node gruppe
-        //"https://fast-garden-76696.herokuapp.com/customers/:id",
+
         {id:'@id'},
         {
-            'update': {method: 'PUT'} //definerer vores egen update metode
+            'update': {method: 'PUT'} //definerer vores egen update metode fordi den ikke findes i ressource
         }
     );
 
@@ -40,7 +40,9 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
             if(recipe._id === undefined)
             {
                 recipeResource.save(recipe, function(data){
-                    recipe._id = data._id;
+                    console.log("Object returned from create");
+                    console.log(data);
+                    recipe._id = data.id;
                     recipes.push(recipe);
                     deferred.resolve(data);
                 }, function(error){
@@ -63,33 +65,12 @@ angular.module("randomRecipe").factory("recipeAPIService",function($q, $resource
             }
             return deferred.promise;
         },
-        /*
-        createRecipe : function(recipe){
-            var deferred = $q.defer();
-            recipeResource.save(recipe, function(data){
-                recipes.push(recipe);
-                deferred.resolve(data);
-            }, function(error){
-                deferred.reject(error);
-            });
-            return deferred.promise;
-        },
-        updateRecipe : function(recipe){
-            var deferred = $q.defer();
-            new recipeResource(recipe).$update({id: recipe._id}, function(data){
-                recipes.push(recipe);
-                deferred.resolve(data);
-            }, function(error){
-                deferred.reject(error);
-            });
-            return deferred.promise;
-        },*/
         deleteRecipe : function(recipe){
             deferred = $q.defer();
             recipeResource.delete({id: recipe._id}, function(data){
-                deferred.resolve(data);
                 var index = recipes.indexOf(recipe._id); // Finder objektets placering i listen
-                recipes.splice(index - 1 ,1); // minus index med 1, da "splice" metoden er nul index'eret
+                recipes.splice(index ,1);
+                deferred.resolve(recipes);
             }, function(error){
                 deferred.reject(error);
             });

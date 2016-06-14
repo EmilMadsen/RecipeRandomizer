@@ -1,3 +1,5 @@
+
+
 angular.module('randomRecipe')
     .config(function($stateProvider, $urlRouterProvider){
 
@@ -5,15 +7,15 @@ angular.module('randomRecipe')
 
     $urlRouterProvider.otherwise('/home');
 
-    //$stateProvider.state('new-recipe', {
-    //    url: '/new-recipe',            // If user changes url
-    //    templateUrl: 'app/partials/recipe-form.html',
-    //    controller: 'newEditRecipeController'
-    //});
-    //$stateProvider.state('all-recipes', {
-    //    url: '/all-recipes', //part of the url url in browser, #/
-    //    templateUrl: 'app/partials/all-recipes.html' //partial view here
-    //});
+        //$stateProvider.state('new-recipe', {
+        //    url: '/new-recipe',            // If user changes url
+        //    templateUrl: 'app/partials/recipe-form.html',
+        //    controller: 'newEditRecipeController'
+        //});
+        //$stateProvider.state('all-recipes', {
+        //    url: '/all-recipes', //part of the url url in browser, #/
+        //    templateUrl: 'app/partials/all-recipes.html' //partial view here
+        //});
 
     $stateProvider.state('home', {
         url: '/home', //part of the url url in browser, #/
@@ -57,4 +59,6 @@ angular.module('randomRecipe')
     //    url: '/b',
     //    templateUrl: 'myHtmlFileB.html',
     //})
+
+
 });
