@@ -18,7 +18,7 @@
         <!-- cuisine w. Dropdown -->
         <div class="col-md-12 col-lg-6">
             <label>Cuisine</label>
-            <span class="error" ng-show="recipeForm.$submitted && recipeForm.time.$pristine">
+            <span class="error" ng-show="recipeForm.$submitted && recipeForm.cuisine.$pristine">
                 <br>
                 Cuisine is required
             </span>
@@ -31,7 +31,7 @@
         <!-- Category w. Dropdown -->
         <div class="col-md-12 col-lg-6">
             <label>Category (Starter, Main Course, Dessert etc.)</label>
-                <span class="error" ng-show="recipeForm.time.$pristine && recipeForm.$submitted ">
+                <span class="error" ng-show="recipeForm.category.$pristine && recipeForm.$submitted ">
                     <br>
                     You have to select a course, of course!
                 </span>
