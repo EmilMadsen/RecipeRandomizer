@@ -30,7 +30,7 @@ angular.module('randomRecipe')
         url: '/new',
         templateUrl: 'app/partials/recipe-form.html',
         controller: 'newEditRecipeController',//
-        params: { recipeParameter: null }//sættes til null når der klikkes på new recipe - så tidligere parametre ikke kommer med.
+        params: { recipeParameter: null }
     });
 
     $stateProvider.state('manage-recipes.all', {

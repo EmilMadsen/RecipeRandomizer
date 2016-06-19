@@ -35,13 +35,7 @@ angular.module("randomRecipe")
     //udvælger tilfældig recipe udfra position i array og gemmer id
     $scope.getRandomRecipe = function(){
         var randomRecipeNumber = Math.floor(Math.random() * $scope.allRecipes.length);
-        var currentNumber = 0;
         console.log("We are getting a random Recipe");
-        angular.forEach($scope.allRecipes, function(value){
-            if (currentNumber === randomRecipeNumber){
-                $scope.randomRecipeId = value._id;
-            }
-            currentNumber++;
-        });
+        $scope.randomRecipeId = $scope.allRecipes[randomRecipeNumber]._id;
     };
 });

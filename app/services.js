@@ -69,8 +69,8 @@ angular.module("randomRecipe")
         deleteRecipe : function(recipe){
             deferred = $q.defer();
             recipeResource.delete({id: recipe._id}, function(data){
-                var index = recipes.indexOf(recipe._id)-1; // Finder objektets placering i listen
-                recipes.splice(index ,1);
+                var index = recipes.indexOf(recipe); // Finder objektets placering i listen
+                recipes.splice(index,1);
                 deferred.resolve(recipes);
             }, function(error){
                 deferred.reject(error);
